@@ -1,12 +1,13 @@
 $(document).ready(function () {
-  $(".about-section").waypoint(
+  $(".content").waypoint(
     function (a) {
       "down" == a
-        ? $("nav").addClass("sticky")
-        : $("nav").removeClass("sticky");
+        ? $(".glo-top-header").addClass("sticky")
+        : $(".glo-top-header").removeClass("sticky");
     },
     { offset: "600px" }
   ),
+    //scroll
     $("a").click(function (a) {
       $("html, body").animate(
         { scrollTop: $($.attr(this, "href")).offset().top },
@@ -14,12 +15,16 @@ $(document).ready(function () {
       ),
         a.preventDefault();
     }),
+    // mobile navigation
     $(".mobile-nav-icon").click(function () {
-      $(".glo-main-nav").slideToggle(200),
-        $(".mobile-nav-icon").hasClass("fa-bars")
-          ? ($(".mobile-nav-icon").addClass("fa-times"),
-            $(".mobile-nav-icon").removeClass("fa-bars"))
-          : ($(".mobile-nav-icon").addClass("fa-bars"),
-            $(".mobile-nav-icon").removeClass("fa-times"));
+      $(".glo-main-nav").slideToggle(300);
+
+      if ($(".mobile-nav-icon").hasClass("fa-bars")) {
+        $(".mobile-nav-icon").addClass("fa-times");
+        $(".mobile-nav-icon").removeClass("fa-bars");
+      } else {
+        $(".mobile-nav-icon").addClass("fa-bars");
+        $(".mobile-nav-icon").removeClass("fa-times");
+      }
     });
 });
